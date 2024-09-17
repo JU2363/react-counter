@@ -1,0 +1,27 @@
+import { useEffect } from 'react'
+import { useAppDispatch } from '../../app/hooks'
+import { fetchUserAsync } from './counterSlice'
+
+const Test = () => {
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+
+
+    const promise = dispatch(fetchUserAsync())
+
+    // const promise = dispatch(incrementAsync(10))
+
+    return () => {
+      promise.abort()
+    }
+  }, [])
+
+  return (
+    <div>
+      Test
+    </div>
+  )
+}
+
+export default Test
